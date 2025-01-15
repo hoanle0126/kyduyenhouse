@@ -1,0 +1,87 @@
+{
+    "ecommerce": "eコマース",
+    "search": "検索",
+    "home": "家",
+    "columns": "コラム",
+    "filters": "フィルター",
+    "exports": "輸出",
+    "name": "名前",
+    "phone_number": "電話番号",
+    "city": "市",
+    "role": "役割",
+    "actions": "アクション",
+    "product": "製品",
+    "created_at": "で作成されました",
+    "stock": "ストック",
+    "price": "価格",
+    "customer":"お客様",
+    "date": "日付",
+    "items": "アイテム",
+    "status": "状態",
+    "start_date": "開始日",
+    "end_date": "終了日",
+    "enter_search_value": "検索値を入力してください",
+    "mode":"モード",
+    "dark_mode":"ダークモード",
+    "contrast":"対比",
+    "language":"言語",
+    "presets":"プリセット",
+    "logout":"ログアウト",
+    "shops": "ショップ",
+    "contact": "接触",
+    "login": "ログイン",
+    "register": "登録する",
+    "seach_by_name": "名前で検索",
+    "sort_by": "並べ替え",
+    "newest": "最新",
+    "high_low": "高ー低",
+    "low_high": "低ー高",
+    "order": {
+        "title": "注文",
+        "status": {
+            "order_placed": "注文済み",
+            "shipping": "配送",
+            "completed": "完了",
+            "cancelled": "キャンセル",
+            "return_refund": "返品返金"
+        }
+    },
+    "admin": {
+        "overview":"概要",
+        "dashboard": {
+            "title": "ダッシュボード",
+            "product_sold": "Product sold",
+            "total_balance": "Total balance",
+            "sales_profit": "Sales profit",
+            "last_week": "last week",
+            "sale_by_gender": "Sale by gender",
+            "total": "Total",
+            "than_last_year": "than last year"
+        },
+        "management": "管理",
+        "user": {
+            "title": "ユーザー"
+        },
+        "products": {
+            "title": "製品",
+            "create_product": "製品を作成する"
+        },
+        "categories": {
+            "title": "カテゴリ",
+            "create_category": "カテゴリの作成"
+        },
+        "orders": {
+            "title": "注文"
+        },
+        "blogs": {
+            "title": "ブログ"
+        },
+        "other": "他の",
+        "profile": {
+            "title": "プロフィール"
+        },
+        "setting": {
+            "title": "設定"
+        }
+    }
+}

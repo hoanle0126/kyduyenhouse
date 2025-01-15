@@ -1,0 +1,87 @@
+{
+    "ecommerce": "Ecommerce",
+    "search": "Search",
+    "home": "Home",
+    "columns": "Columns",
+    "filters": "Filters",
+    "exports": "Exports",
+    "name": "Name",
+    "phone_number": "Phone number",
+    "city": "City",
+    "role": "Role",
+    "actions": "Actions",
+    "product": "Product",
+    "created_at": "Created at",
+    "stock": "Stock",
+    "price": "Price",
+    "customer": "Customer",
+    "date": "Date",
+    "items": "Items",
+    "status": "Status",
+    "start_date": "Start date",
+    "end_date": "End date",
+    "enter_search_value": "Enter search value",
+    "mode": "Mode",
+    "dark_mode": "Dark mode",
+    "contrast": "Contrast",
+    "language": "Language",
+    "presets": "Presets",
+    "logout": "Logout",
+    "shops": "Shops",
+    "contact": "Contact",
+    "login": "Login",
+    "register": "Register",
+    "seach_by_name": "Search by name",
+    "sort_by": "Sort by",
+    "newest": "Newest",
+    "high_low": "High-Low",
+    "low_high": "Low-High",
+    "order": {
+        "title": "Order",
+        "status": {
+            "order_placed": "Order placed",
+            "shipping": "Shipping",
+            "completed": "Completed",
+            "cancelled": "Cancelled",
+            "return_refund": "Return refund"
+        }
+    },
+    "admin": {
+        "overview": "overview",
+        "dashboard": {
+            "title": "Dashboard",
+            "product_sold": "Product sold",
+            "total_balance": "Total balance",
+            "sales_profit": "Sales profit",
+            "last_week": "last week",
+            "sale_by_gender": "Sale by gender",
+            "total": "Total",
+            "than_last_year": "than last year"
+        },
+        "management": "management",
+        "user": {
+            "title": "User"
+        },
+        "products": {
+            "title": "Products",
+            "create_product": "Create product"
+        },
+        "categories": {
+            "title": "Categories",
+            "create_category": "Create category"
+        },
+        "orders": {
+            "title": "Orders"
+        },
+        "blogs": {
+            "title": "Blogs"
+        },
+        "other": "other",
+        "profile": {
+            "title": "Profile"
+        },
+        "setting": {
+            "title": "Setting"
+        }
+    }
+}

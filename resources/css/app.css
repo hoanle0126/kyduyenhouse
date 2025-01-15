@@ -1,0 +1,11 @@
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* base */
+@import "./base/variable.css";
+/* end base */
+
+/* components */
+@import "./components/embla.css";
+/* end components */

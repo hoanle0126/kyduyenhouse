@@ -1,0 +1,97 @@
+@layer components {
+    .embla {
+        position: relative;
+
+        &__viewport {
+            overflow: hidden;
+        }
+        &__container {
+            display: flex;
+        }
+        &__controls {
+            display: flex;
+            justify-content: end;
+            margin-top: 12px;
+        }
+        &__button {
+            &s {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.6rem;
+                align-items: center;
+            }
+
+            -webkit-tap-highlight-color: rgba(
+                var(--text-high-contrast-rgb-value),
+                0.5
+            );
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            touch-action: manipulation;
+            display: inline-flex;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            box-shadow: inset 0 0 0 0.2rem var(--detail-medium-contrast);
+            width: 2.0rem;
+            height: 2.0rem;
+            z-index: 1;
+            border-radius: 50%;
+            color: var(--text-body);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            &:disabled {
+                color: var(--detail-high-contrast);
+            }
+
+            &__svg {
+                width: 35%;
+                height: 35%;
+            }
+        }
+        &__dot {
+            &s {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: flex-end;
+                align-items: center;
+                position: absolute;
+                bottom: 40px;
+                transform: translateX(-50%);
+                left: 50%;
+                gap: 12px;
+            }
+
+            -webkit-tap-highlight-color: rgba(
+                var(--text-high-contrast-rgb-value),
+                0.5
+            );
+            -webkit-appearance: none;
+            appearance: none;
+            background-color: transparent;
+            touch-action: manipulation;
+            display: inline-flex;
+            text-decoration: none;
+            cursor: pointer;
+            border: 0;
+            padding: 0;
+            margin: 0;
+            width: 0.8rem;
+            height: 0.8rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            background-color: #454F5B;
+
+            &--selected {
+                background-color: #DFE3E8;
+            }
+        }
+    }
+}
