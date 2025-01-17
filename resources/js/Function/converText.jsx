@@ -1,13 +1,22 @@
 import React from "react";
 
 const convertText = (text) => {
-    return text
+    // Bỏ dấu tiếng Việt
+    const removeVietnameseTones = (text) => {
+        return text
+            .normalize("NFD")
+            .replace(/[\u0300-\u036f]/g, "") // Loại bỏ dấu
+            .replace(/đ/g, "d")
+            .replace(/Đ/g, "D");
+    };
+
+    // Chuyển đổi chuỗi
+    const sanitized = removeVietnameseTones(text)
         .toLowerCase() // Chuyển thành chữ thường
-        .normalize("NFD") // Chuẩn hóa ký tự (dùng để xử lý dấu tiếng Việt)
-        .replace(/[\u0300-\u036f]/g, "") // Loại bỏ dấu tiếng Việt
-        .replace(/[^a-z0-9\s]/g, "") // Loại bỏ ký tự đặc biệt
-        .trim() // Loại bỏ khoảng trắng ở đầu và cuối
-        .replace(/\s+/g, "-"); // Thay khoảng trắng bằng dấu gạch ngang
+        .replace(/[^a-z0-9]+/g, "-") // Thay ký tự không hợp lệ bằng dấu -
+        .replace(/^-|-$/g, ""); // Xóa dấu - ở đầu hoặc cuối
+
+    return sanitized;
 };
 
 export default convertText;

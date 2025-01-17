@@ -1,17 +1,28 @@
 <?php
 
+use App\Http\Controllers\AddressController;
 use App\Http\Controllers\CartController;
 use App\Http\Controllers\CategoryController;
+use App\Http\Controllers\DesignController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ShopController;
+use App\Http\Resources\CategoryResource;
+use App\Http\Resources\OrderResource;
+use App\Http\Resources\ProductResource;
+use App\Models\Category;
+use App\Models\Order;
+use App\Models\Product;
 use Illuminate\Foundation\Application;
 use Illuminate\Support\Facades\Route;
 use Inertia\Inertia;
 
 Route::get('/', function () {
-    return Inertia::render('Client/LandingPage/index');
+    return Inertia::render('Client/LandingPage/index', [
+        "categories" => CategoryResource::collection(Category::all()),
+        "products" => ProductResource::collection(Product::paginate(8))
+    ]);
 })->name("landing");
 
 Route::get('/admin', function () {
@@ -22,12 +33,12 @@ Route::resource("/admin/products", ProductController::class);
 
 Route::resource('/admin/categories', CategoryController::class);
 
-Route::get('/admin/blogs', function () {
-    return Inertia::render('Admin/BlogPage/index');
-})->name("admin.blogs");
+Route::resource('/admin/designs', DesignController::class);
 
 Route::get('/admin/orders', function () {
-    return Inertia::render('Admin/OrderPage/index');
+    return Inertia::render('Admin/OrderPage/index', [
+        "orders" => OrderResource::collection(Order::all())
+    ]);
 })->name("admin.orders");
 
 Route::get('/admin/setting', function () {
@@ -54,6 +65,7 @@ Route::get('/admin/profile', function () {
 Route::resource("/shop", ShopController::class);
 Route::resource('/reviews', ReviewController::class);
 Route::resource('/checkout', controller: CartController::class);
+Route::resource('/address', controller: AddressController::class);
 Route::post('/checkout/{product}', [CartController::class, "store"])->name("cart.store");
 
 Route::get('/dashboard', function () {

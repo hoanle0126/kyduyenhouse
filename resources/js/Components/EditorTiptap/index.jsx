@@ -16,6 +16,8 @@ import React from "react";
 import MenuBar from "./menuBar";
 import HardBreak from "@tiptap/extension-hard-break";
 import Image from "@tiptap/extension-image";
+import { MuiTheme } from "@/Theme";
+import GlobalStyle from "../GlobalStyle";
 
 const EditorTiptap = ({ content, setContent }) => {
     const editor = useEditor({
@@ -41,39 +43,40 @@ const EditorTiptap = ({ content, setContent }) => {
     });
 
     return (
-        <Box
-            sx={{
-                backgroundColor: "background.neutral",
-                border: "1px solid",
-                borderRadius: "12px",
-                borderColor: "divider",
-                overflow: "hidden",
-                br: {
-                    content: "''",
-                    display: "block",
-                    height: "12px",
-                },
-                img: {
-                    margin: "12px",
-                },
-
-                ".tiptap": {
-                    borderTop: "1px solid black",
-                    padding: "8px",
+        <GlobalStyle>
+            <Box
+                sx={{
+                    backgroundColor: "background.neutral",
+                    border: "1px solid",
+                    borderRadius: "12px",
                     borderColor: "divider",
-                    minHeight: "300px",
-                    "&:first-child": {
-                        marginTop: 0,
+                    overflow: "hidden",
+                    br: {
+                        content: "''",
+                        display: "block",
+                        height: "12px",
                     },
-                    "&:focus": {
-                        outline: "none",
+                    img: {
+                        margin: "12px",
                     },
-                },
-            }}
-        >
-            <MenuBar editor={editor} />
-            <EditorContent editor={editor} />
-        </Box>
+                    ".tiptap": {
+                        borderTop: "1px solid black",
+                        padding: "8px",
+                        borderColor: "divider",
+                        minHeight: "300px",
+                        "&:first-child": {
+                            marginTop: 0,
+                        },
+                        "&:focus": {
+                            outline: "none",
+                        },
+                    },
+                }}
+            >
+                <MenuBar editor={editor} />
+                <EditorContent editor={editor} />
+            </Box>
+        </GlobalStyle>
     );
 };
 

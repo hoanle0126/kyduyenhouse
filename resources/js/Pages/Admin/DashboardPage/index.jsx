@@ -1,16 +1,14 @@
 import AdminLayout from "@/Layouts/AdminLayout";
-import { Grid2 } from "@mui/material";
+import { Grid2, Stack, TextField } from "@mui/material";
 import React from "react";
 import SaleByGenderCard from "./SaleByGenderCard";
 import ProductSoldCard from "./ProductSoldCard";
 import YearlySalesCard from "./YearlySalesCard";
 import TotalBalanceCard from "./TotalBalanceCard";
 import SalesProfitCard from "./SalesProfitCard";
-import { usePage } from "@inertiajs/react";
 import AdminDefaultLayout from "@/Layouts/AdminLayout/DefaultLayout";
 
 const DashboardPage = () => {
-
     return (
         <AdminLayout title={"Dashboard"}>
             <AdminDefaultLayout title={"Dashboard"}>

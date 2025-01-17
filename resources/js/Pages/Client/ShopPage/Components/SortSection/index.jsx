@@ -40,7 +40,7 @@ const SortSection = () => {
                     }}
                 >
                     <MenuItem value={"name"}>Sort by name product</MenuItem>
-                    <MenuItem value={"price"}>Sort by price</MenuItem>
+                    <MenuItem value={"price_total"}>Sort by price</MenuItem>
                 </Select>
             </FormControl>
             <IconButton

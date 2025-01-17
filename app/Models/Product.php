@@ -17,6 +17,7 @@ class Product extends Model
         'category_id',
         "sales",
         "price",
+        "price_total",
         "quantity",
         "ingredient",
         "images"

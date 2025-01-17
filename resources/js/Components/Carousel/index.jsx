@@ -26,12 +26,16 @@ const EmblaCarousel = (props) => {
     } = usePrevNextButtons(emblaApi);
 
     return (
-        <Box component="section" className="embla">
-            <Box className="embla__viewport" ref={emblaRef}>
-                <Box className="embla__container">
+        <Box
+            component="section"
+            sx={{
+                position: "relative",
+            }}
+        >
+            <Box sx={{ overflow: "hidden" }} ref={emblaRef}>
+                <Box sx={{ display: "flex" }}>
                     {slides.map((slideItem, slideIndex) => (
                         <Box
-                            className="embla__slide"
                             key={slideIndex}
                             sx={{
                                 flex: `0 0 ${numImage ? 100 / numImage : 100}%`,
@@ -63,7 +67,7 @@ const EmblaCarousel = (props) => {
                 </Box>
             </Box>
 
-            <div className="embla__controls">
+            {/* <div className="embla__controls">
                 {arrows && (
                     <div className="embla__buttons">
                         <PrevButton
@@ -76,23 +80,7 @@ const EmblaCarousel = (props) => {
                         />
                     </div>
                 )}
-
-                {dots && (
-                    <div className="embla__dots">
-                        {scrollSnaps.map((_, index) => (
-                            <DotButton
-                                key={index}
-                                onClick={() => onDotButtonClick(index)}
-                                className={"embla__dot".concat(
-                                    index === selectedIndex
-                                        ? " embla__dot--selected"
-                                        : ""
-                                )}
-                            />
-                        ))}
-                    </div>
-                )}
-            </div>
+            </div> */}
         </Box>
     );
 };

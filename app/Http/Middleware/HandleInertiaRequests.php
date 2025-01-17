@@ -2,7 +2,9 @@
 
 namespace App\Http\Middleware;
 
+use App\Http\Resources\CategoryResource;
 use App\Http\Resources\UserResource;
+use App\Models\Category;
 use Illuminate\Http\Request;
 use Inertia\Middleware;
 
@@ -35,6 +37,8 @@ class HandleInertiaRequests extends Middleware
             'auth' => [
                 'user' => $request->user() ? new UserResource($request->user()) : null,
             ],
+            'previous' => url()->previous(),
+            "categories" => CategoryResource::collection(Category::all())
         ];
     }
 }

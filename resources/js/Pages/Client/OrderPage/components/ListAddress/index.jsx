@@ -20,6 +20,8 @@ import {
 import axios from "axios";
 import React from "react";
 import { Palette } from "resources/js/Theme/elements/palette";
+import AddAddressModal from "./components/AddAddressModal";
+import { MuiTheme } from "../../../../../Theme";
 
 const ListAddress = ({ backAction, setStep, order, setOrder }) => {
     const { props } = usePage();
@@ -27,221 +29,15 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
     const [open, setOpen] = React.useState(false);
     const handleOpen = () => setOpen(true);
     const handleClose = () => setOpen(false);
-    const [address, setAddress] = React.useState({
-        city: "",
-        district: "",
-        ward: "",
-        address: "",
-        type: "Home",
-        default: false,
-    });
 
-    const getDistricts = (nameCity) => {
-        return cities.filter((it) => it.name === nameCity)[0].districts;
-    };
-
-    const getWards = (nameCity, nameDistrict) => {
-        return cities
-            .filter((it) => it.name === nameCity)[0]
-            .districts.filter((it) => it.name === nameDistrict)[0].wards;
-    };
-    const addAdress = () => {
-        router.post(route("addresses.store"), address, {
-            onSuccess: () => {
-                router.visit(route("?step=1"));
-            },
-        });
-    };
-
+    React.useEffect(() => {
+        console.log("props", props);
+    }, []);
     return (
         <>
-            <Modal
-                open={open}
-                onClose={handleClose}
-                aria-labelledby="modal-modal-title"
-                aria-describedby="modal-modal-description"
-            >
-                <Stack
-                    sx={{
-                        position: "absolute",
-                        top: "50%",
-                        left: "50%",
-                        transform: "translate(-50%, -50%)",
-                        width: 600,
-                        bgcolor: "background.paper",
-                        boxShadow: "custom.card",
-                        borderRadius: "16px",
-                        p: 4,
-                        gap: "24px",
-                    }}
-                >
-                    <Typography
-                        id="modal-modal-title"
-                        variant="h6"
-                        color="text.primary"
-                    >
-                        New Address
-                    </Typography>
-                    <RadioGroup
-                        row
-                        aria-labelledby="demo-row-radio-buttons-group-label"
-                        name="row-radio-buttons-group"
-                        value={address.type}
-                        onChange={(e) => {
-                            setAddress({ ...address, type: e.target.value });
-                        }}
-                    >
-                        <FormControlLabel
-                            value="Home"
-                            control={<Radio color="common" />}
-                            label={
-                                <Typography color="text.primary">
-                                    Home
-                                </Typography>
-                            }
-                        />
-                        <FormControlLabel
-                            value="Office"
-                            control={<Radio color="common" />}
-                            label={
-                                <Typography color="text.primary">
-                                    Office
-                                </Typography>
-                            }
-                        />
-                    </RadioGroup>
-                    <Stack direction={"row"} gap={"16px"}>
-                        <FormControl fullWidth>
-                            <InputLabel id="demo-simple-select-label">
-                                City
-                            </InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={address.city}
-                                label="City"
-                                onChange={(event) => {
-                                    setAddress({
-                                        ...address,
-                                        city: event.target.value,
-                                    });
-                                }}
-                            >
-                                {cities.map((city) => (
-                                    <MenuItem value={city.name} key={city}>
-                                        {city.name}
-                                    </MenuItem>
-                                ))}
-                            </Select>
-                        </FormControl>
-                        <FormControl fullWidth disabled={address.city == ""}>
-                            <InputLabel id="demo-simple-select-label">
-                                District
-                            </InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={address.district}
-                                label="District"
-                                onChange={(event) => {
-                                    setAddress({
-                                        ...address,
-                                        district: event.target.value,
-                                    });
-                                }}
-                            >
-                                {address.city != "" &&
-                                    getDistricts(address.city).map(
-                                        (district) => (
-                                            <MenuItem
-                                                value={district.name}
-                                                key={district}
-                                            >
-                                                {district.name}
-                                            </MenuItem>
-                                        )
-                                    )}
-                            </Select>
-                        </FormControl>
-                        <FormControl
-                            fullWidth
-                            disabled={address.district == ""}
-                        >
-                            <InputLabel id="demo-simple-select-label">
-                                Ward
-                            </InputLabel>
-                            <Select
-                                labelId="demo-simple-select-label"
-                                id="demo-simple-select"
-                                value={address.ward}
-                                label="Age"
-                                onChange={(event) => {
-                                    setAddress({
-                                        ...address,
-                                        ward: event.target.value,
-                                    });
-                                }}
-                            >
-                                {address.city != "" &&
-                                    address.district != "" &&
-                                    getWards(
-                                        address.city,
-                                        address.district
-                                    ).map((ward) => (
-                                        <MenuItem value={ward.name} key={ward}>
-                                            {ward.name}
-                                        </MenuItem>
-                                    ))}
-                            </Select>
-                        </FormControl>
-                    </Stack>
-                    <TextField
-                        fullWidth
-                        label="Address"
-                        value={address.address}
-                        onChange={(e) =>
-                            setAddress({ ...address, address: e.target.value })
-                        }
-                    />
-                    <FormControlLabel
-                        control={
-                            <Checkbox
-                                checked={address.default}
-                                onChange={(e) => {
-                                    setAddress({
-                                        ...address,
-                                        default: e.target.checked,
-                                    });
-                                }}
-                                color="common"
-                            />
-                        }
-                        label={
-                            <Typography color="text.primary">
-                                Use this address as default.
-                            </Typography>
-                        }
-                    />
-                    <Stack
-                        direction={"row"}
-                        justifyContent={"end"}
-                        gap={"16px"}
-                    >
-                        <Button variant="outlined" color="common">
-                            Cancel
-                        </Button>
-                        <Button
-                            variant="contained"
-                            color="common"
-                            onClick={addAdress}
-                        >
-                            Deliver to this address
-                        </Button>
-                    </Stack>
-                </Stack>
-            </Modal>
+            <AddAddressModal open={open} handleClose={handleClose} />
             <Stack gap={"32px"}>
-                {props.addresses.map((addressItem) => (
+                {props.auth.user.address?.map((addressItem) => (
                     <Box
                         key={addressItem}
                         sx={{
@@ -265,11 +61,9 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
                                 variant="subtitle2"
                                 color="text.primary"
                             >
-                                {addressItem.user.first_name}{" "}
-                                {addressItem.user.last_name}
-                            </Typography>
-                            <Typography variant="body2" color="text.primary">
-                                ({addressItem.type})
+                                {addressItem.first_name.concat(
+                                    " " + addressItem.last_name
+                                )}
                             </Typography>
                             {addressItem.default && (
                                 <Typography
@@ -287,8 +81,8 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
                             )}
                         </Stack>
                         <Typography variant="body2" color={"text.secondary"}>
-                            {addressItem.address}/{addressItem.ward}/
-                            {addressItem.district}/{addressItem.city}
+                            {addressItem.street_address} / {addressItem.city} / 
+                            {addressItem.state}
                         </Typography>
                         <Stack
                             direction={"row"}
@@ -299,7 +93,7 @@ const ListAddress = ({ backAction, setStep, order, setOrder }) => {
                                 variant="body2"
                                 color={"text.secondary"}
                             >
-                                +1 202-555-0143
+                                +1 {addressItem.phone}
                             </Typography>
                             <div className="flex-1"></div>
                             <Button color="error">Delete</Button>

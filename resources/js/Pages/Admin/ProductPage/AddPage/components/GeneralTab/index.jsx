@@ -31,6 +31,7 @@ import AddSalesModel from "./components/AddSalesModel";
 import { DatePicker } from "@mui/x-date-pickers";
 import EditorTiptap from "@/Components/EditorTiptap";
 import { AnimatePresence, motion } from "motion/react";
+import convertText from "@/Function/converText";
 
 const GeneralTab = ({ product, setProduct }) => {
     const MotionStack = motion(Stack);
@@ -64,7 +65,10 @@ const GeneralTab = ({ product, setProduct }) => {
                             placeholder="Enter product name..."
                             value={product?.name}
                             onChange={(e) =>
-                                setProduct({ ...product, name: e.target.value })
+                                setProduct({
+                                    ...product,
+                                    name: e.target.value
+                                })
                             }
                         />
                         <Typography

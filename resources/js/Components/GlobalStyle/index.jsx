@@ -1,5 +1,5 @@
 import { typography } from "@/Theme/elements/typography";
-import { GlobalStyles } from "@mui/material";
+import { Box, GlobalStyles } from "@mui/material";
 import React from "react";
 import embla from "./elements/embla";
 import { MuiTheme } from "resources/js/Theme";
@@ -7,8 +7,8 @@ import scrollbar from "./elements/scrollbar";
 
 const GlobalStyle = ({ children }) => {
     return (
-        <GlobalStyles
-            styles={{
+        <Box
+            sx={{
                 h1: typography.h1,
                 h2: typography.h2,
                 h3: typography.h3,
@@ -37,9 +37,14 @@ const GlobalStyle = ({ children }) => {
                 "& .MuiInputBase-input:focus": {
                     boxShadow: "none",
                 },
+                img: {
+                    width: 400,
+                    height: 400,
+                },
             }}
         >
-        </GlobalStyles>
+            {children}
+        </Box>
     );
 };
 

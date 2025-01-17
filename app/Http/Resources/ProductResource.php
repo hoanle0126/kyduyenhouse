@@ -32,7 +32,7 @@ class ProductResource extends JsonResource
             "remain" => $this->remain,
             "category" => $this->category,
             "price" => $this->price,
-            "price_total" => $this->sales != null ? $this->price * (100 - $this->sales['value']) / 100 : null,
+            "price_total" => $this->price_total,
             "reviews" => ReviewResource::collection(Review::where("product_id", $this->id)->get()),
             "rating" => Review::where("product_id", $this->id)->average("rating"),
             "ingredient" => $this->ingredient,

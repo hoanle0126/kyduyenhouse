@@ -243,25 +243,6 @@ const MenuBar = ({ editor }) => {
                 </IconButton>
             </Stack>
             <Divider orientation="vertical" sx={{ height: "24px" }} />
-            <IconButton
-                sx={{ borderRadius: "8px" }}
-                onClick={() =>
-                    editor
-                        .chain()
-                        .focus()
-                        .setImage({
-                            src: "https://scx2.b-cdn.net/gfx/news/hires/2019/galaxy.jpg",
-                        })
-                        .run()
-                }
-            >
-                <Icon
-                    icon="solar:link-bold"
-                    width="18"
-                    height="18"
-                    color={MuiTheme().palette.text.primary}
-                />
-            </IconButton>
             <IconButton component="label" sx={{ borderRadius: "8px" }}>
                 <Icon
                     icon="solar:gallery-send-broken"

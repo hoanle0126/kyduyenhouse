@@ -124,6 +124,27 @@ const CheckoutPage = () => {
                             Checkout
                         </Typography>
                     </Box>
+                    <Box
+                        sx={{
+                            width: "100%",
+                            backgroundColor: "background.neutral",
+                            display: "flex",
+                            alignItems: "center",
+                            paddingX: "160px",
+                            paddingY: "12px",
+                            a: {
+                                color: "text.secondary",
+                                "&:hover": {
+                                    color: "text.primary",
+                                },
+                            },
+                        }}
+                    >
+                        <Link className="flex items-center gap-[12px]" href={props.previous}>
+                            <Icon icon="solar:undo-left-bold" />
+                            Back
+                        </Link>
+                    </Box>
                 </Stack>
                 <Grid2
                     container

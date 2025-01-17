@@ -42,34 +42,17 @@ const ListNavItems = () => {
                 {
                     name: "Orders",
                     icon: "solar:cart-large-4-bold-duotone",
-                    to: "orders.index",
+                    to: "admin.orders",
                     active: url.includes("/orders"),
                 },
                 {
-                    name: "Blogs",
-                    icon: "solar:documents-bold-duotone",
-                    to: "blogs.index",
-                    active: url.includes("/blogs"),
+                    name: "Design",
+                    icon: "solar:paint-roller-bold",
+                    to: "designs.index",
+                    active: url.includes("/designs"),
                 },
             ],
-        },
-        {
-            name: "Other",
-            items: [
-                {
-                    name: "Profile",
-                    icon: "solar:user-id-bold-duotone",
-                    to: "profile.index",
-                    active: url.includes("/profile"),
-                },
-                {
-                    name: "Setting",
-                    icon: "solar:settings-bold-duotone",
-                    to: "setting.index",
-                    active: url.includes("/setting"),
-                },
-            ],
-        },
+        }
     ];
 };
 

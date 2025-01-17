@@ -22,6 +22,7 @@ import ProductReviewTab from "./ProductReviewTab";
 import ThumbnailCarousel from "@/Components/Thumbnail";
 import { formatCurrency } from "@/Function/formatCurrency";
 import QuantitySection from "./sections/QuantitySection";
+import GlobalStyle from "@/Components/GlobalStyle";
 
 const OPTIONS = {};
 const SLIDE_COUNT = 10;
@@ -344,18 +345,20 @@ const ShopDetailPage = () => {
                                 />
                             </Tabs>
                             <CustomTabPanel tab={tab} index={1}>
-                                <Box
-                                    sx={{
-                                        display: "flex",
-                                        flexDirection: "column",
-                                        alignItems: "start",
-                                        padding: "40px 24px",
-                                        gap: "16px",
-                                    }}
-                                    dangerouslySetInnerHTML={{
-                                        __html: props.product.description,
-                                    }}
-                                ></Box>
+                                <GlobalStyle>
+                                    <Box
+                                        sx={{
+                                            display: "flex",
+                                            flexDirection: "column",
+                                            alignItems: "start",
+                                            padding: "40px 24px",
+                                            gap: "16px",
+                                        }}
+                                        dangerouslySetInnerHTML={{
+                                            __html: props.product.description,
+                                        }}
+                                    ></Box>
+                                </GlobalStyle>
                             </CustomTabPanel>
                             <CustomTabPanel tab={tab} index={2}>
                                 <ProductReviewTab />

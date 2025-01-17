@@ -23,9 +23,11 @@ class UserResource extends JsonResource
     {
         return [
             'id' => $this->id,
-            'first_name' => $this->name,
+            'first_name' => $this->first_name,
+            'last_name' => $this->last_name,
             'email' => $this->email,
             'phone' => $this->phone,
+            'address' => $this->address,
             'role' => $this->getRoleNames() ? explode(",", $this->getRoleNames()->first())[0] : "Client",
             'cart' => new CartResource($this->cart),
             'orders' => OrderResource::collection($this->order)

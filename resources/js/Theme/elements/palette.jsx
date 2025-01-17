@@ -85,6 +85,14 @@ export function Palette() {
             darker: grey[800],
             contrastText: grey[0],
         },
+        common_light: {
+            lighter: grey[100],
+            light: grey[200],
+            main: grey[0],
+            dark: grey[300],
+            darker: grey[400],
+            contrastText: grey[0],
+        },
         text: {
             primary: grey[800],
             secondary: grey[600],

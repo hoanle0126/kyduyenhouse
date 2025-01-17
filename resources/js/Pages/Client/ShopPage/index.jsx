@@ -31,6 +31,7 @@ import PriceSlider from "@/Components/PriceSlider";
 import FilterSection from "./Components/FilterSection";
 import SortSection from "./Components/SortSection";
 import ProductSection from "./Components/ProductSection";
+import convertText from "@/Function/converText";
 
 const ShopPage = () => {
     const { props } = usePage();
@@ -40,7 +41,10 @@ const ShopPage = () => {
     const searchParams = new URLSearchParams(search);
 
     React.useEffect(() => {
-        console.log("ads", props);
+        console.log(
+            "ads",
+            convertText("Tinh dầu thông đỏ Samsung - Kumkang Pine - Max_500mg (180 viên) 금강 적송원")
+        );
     }, []);
 
     const handleChange = (event) => {

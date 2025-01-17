@@ -21,6 +21,8 @@ class ShopController extends Controller
         $price = request()->get("price");
         $sort = request()->get("sort");
         $asc = request()->get("asc");
+        $search = request()->get("search");
+        $sort = request()->get("sort");
         $range = explode("-", $price);
         $paginate = request()->get("paginate");
         $products = Product::query();
@@ -32,6 +34,12 @@ class ShopController extends Controller
         if ($price) {
             $products = $products->where("price", "<=", $range[1]);
             $products = $products->where("price", ">=", $range[0]);
+        }
+        if ($search) {
+            $products = $products->where("name", "like", $search . "%");
+        }
+        if ($sort) {
+            $products = $products->orderBy($sort, $asc || $asc == true ? "asc" : "desc");
         }
 
         return Inertia::render('Client/ShopPage/index', [

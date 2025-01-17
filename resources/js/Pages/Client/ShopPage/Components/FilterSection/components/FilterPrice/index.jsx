@@ -33,7 +33,7 @@ const FilterPrice = () => {
                         preserveState: true,
                     });
                 }}
-                rangeValue={props.range}
+                rangeValue={searchParams.get("price") || [0, 200]}
             />
         </Stack>
     );

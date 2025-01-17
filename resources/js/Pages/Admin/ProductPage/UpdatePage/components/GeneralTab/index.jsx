@@ -60,7 +60,10 @@ const GeneralTab = ({ product, setProduct }) => {
                             placeholder="Enter product name..."
                             value={product?.name}
                             onChange={(e) =>
-                                setProduct({ ...product, name: e.target.value })
+                                setProduct({
+                                    ...product,
+                                    name: e.target.value
+                                })
                             }
                         />
                         <Typography

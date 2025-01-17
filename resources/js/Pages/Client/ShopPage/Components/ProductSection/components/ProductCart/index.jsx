@@ -9,11 +9,16 @@ const ProductCart = ({ shopItem }) => {
     const [hover, setHover] = React.useState(false);
 
     return (
-        <Stack>
+        <Stack
+            sx={{
+                width: "100%",
+                height: "100%",
+            }}
+        >
             <Box
                 sx={{
                     width: "100%",
-                    aspectRatio: "1/1",
+                    aspectRatio: "1 / 1",
                     backgroundColor: "background.neutral",
                     position: "relative",
                     zIndex: 0,
@@ -42,7 +47,7 @@ const ProductCart = ({ shopItem }) => {
                 <img
                     src={shopItem.thumbnail}
                     alt=""
-                    className="w-full h-full select-none"
+                    className="w-full aspect-square select-none"
                 />
                 {hover && (
                     <Stack
@@ -50,6 +55,7 @@ const ProductCart = ({ shopItem }) => {
                             position: "absolute",
                             top: 0,
                             gap: "8px",
+                            padding: "4px",
                             svg: {
                                 color: "text.primary",
                                 width: 24,
@@ -65,40 +71,56 @@ const ProductCart = ({ shopItem }) => {
                             icon="eva:search-fill"
                             onClick={() =>
                                 router.visit(
-                                    route(
-                                        "shop.show",
-                                        shopItem.key_name
-                                    )
+                                    route("shop.show", shopItem.key_name)
                                 )
                             }
                         />
-                        <Icon icon="eva:search-fill" />
+                        <Icon
+                            icon="solar:cart-5-broken"
+                            onClick={() => {
+                                router.post(
+                                    route("cart.store", props.product.id),
+                                    {
+                                        quantity: 1,
+                                    }
+                                );
+                            }}
+                        />
                     </Stack>
                 )}
             </Box>
-            <Stack gap="2px" paddingTop="8px">
+            <Stack
+                gap="2px"
+                paddingTop="8px"
+                sx={{ height: "100%" }}
+            >
                 <Typography
                     variant="subtitle1"
                     sx={{
                         cursor: "pointer",
+                        flex: 1,
                         "&:hover": {
                             color: "info.main",
                         },
                     }}
+                    onClick={() =>
+                        router.visit(route("shop.show", shopItem.key_name))
+                    }
                 >
                     {shopItem.name}
                 </Typography>
-                <Rating size="small" />
+                <Rating value={shopItem.rating} readOnly />
                 <Stack direction="row" gap="8px">
-                    <Typography variant="body2" color="text.disabled">
+                    <Typography variant="body2">
                         {formatCurrency(shopItem.price)}
                     </Typography>
-                    <Typography variant="body2" color="error.main">
+                    {/* <Typography variant="body2" color="error.main">
                         {formatCurrency(
                             shopItem.price -
                                 (shopItem.price * shopItem.sales?.value) / 100
-                        )}
-                    </Typography>
+                        )}{" "}
+                        {shopItem.rating}
+                    </Typography> */}
                 </Stack>
             </Stack>
         </Stack>

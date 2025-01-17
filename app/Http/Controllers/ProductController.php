@@ -9,6 +9,7 @@ use App\Models\Product;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
+use Str;
 
 class ProductController extends Controller
 {
@@ -39,6 +40,7 @@ class ProductController extends Controller
     {
         $product = Product::create([
             'name' => $request->name,
+            'key_name' => Str::slug($request->name, '-'),
             'description' => $request->description,
             'thumbnail' => $request->thumbnail,
             'category_id' => $request->category,
@@ -76,6 +78,7 @@ class ProductController extends Controller
     {
         $product->update([
             'name' => $request->name,
+            'key_name' => Str::slug($request->name, '-'),
             'description' => $request->description,
             'thumbnail' => $request->thumbnail,
             'category_id' => $request->category['id'],

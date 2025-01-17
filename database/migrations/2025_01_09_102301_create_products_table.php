@@ -19,8 +19,10 @@ return new class extends Migration {
             $table->string("description")->nullable();
             $table->json("ingredient")->nullable();
             $table->float("price");
+            $table->float("price_total");
             $table->json("sales")->nullable(); 
             $table->integer("quantity"); 
+            $table->integer("remain"); 
             $table->json("images");
             $table->foreignIdFor(Category::class)->constrained()->cascadeOnDelete();
             $table->timestamps();
