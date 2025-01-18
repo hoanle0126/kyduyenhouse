@@ -18,16 +18,10 @@ services:
             XDEBUG_CONFIG: '${SAIL_XDEBUG_CONFIG:-client_host=host.docker.internal}'
             IGNITION_LOCAL_SITES_PATH: '${PWD}'
             DB_CONNECTION: mysql
-            DB_HOST: 'mysql.railway.internal'   # Host của MySQL trên Railway
+            DB_HOST: '${DB_HOST}'   # Host của MySQL trên Railway
             DB_PORT: '3306'
             DB_DATABASE: '${DB_DATABASE}'      # Tên cơ sở dữ liệu trên Railway
             DB_USERNAME: '${DB_USERNAME}'      # Tên người dùng MySQL
             DB_PASSWORD: '${DB_PASSWORD}'      # Mật khẩu MySQL
         volumes:
             - '.:/var/www/html'
-        networks:
-            - sail
-        depends_on:
-            # Không cần MySQL nữa, bỏ mysql ở đây
-        command: >
-            bash -c "php artisan migrate --force && php-fpm"
