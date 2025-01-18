@@ -20,34 +20,34 @@ use Inertia\Inertia;
 
 Route::get('/', function () {
     return Inertia::render('Client/LandingPage/index', [
-        "categories" => CategoryResource::collection(Category::all()),
-        "products" => ProductResource::collection(Product::paginate(8))
+        // "categories" => CategoryResource::collection(Category::all()),
+        // "products" => ProductResource::collection(Product::paginate(8))
     ]);
 })->name("landing");
 
-Route::get('/admin', function () {
-    return Inertia::render('Admin/DashboardPage/index');
-})->name("admin.dashboard");
+// Route::get('/admin', function () {
+//     return Inertia::render('Admin/DashboardPage/index');
+// })->name("admin.dashboard");
 
-Route::resource("/admin/products", ProductController::class);
+// Route::resource("/admin/products", ProductController::class);
 
-Route::resource('/admin/categories', CategoryController::class);
+// Route::resource('/admin/categories', CategoryController::class);
 
-Route::resource('/admin/designs', DesignController::class);
+// Route::resource('/admin/designs', DesignController::class);
 
-Route::get('/admin/orders', function () {
-    return Inertia::render('Admin/OrderPage/index', [
-        "orders" => OrderResource::collection(Order::all())
-    ]);
-})->name("admin.orders");
+// Route::get('/admin/orders', function () {
+//     return Inertia::render('Admin/OrderPage/index', [
+//         "orders" => OrderResource::collection(Order::all())
+//     ]);
+// })->name("admin.orders");
 
-Route::get('/admin/setting', function () {
-    return Inertia::render('Admin/SettingPage/index');
-})->name("admin.setting");
+// Route::get('/admin/setting', function () {
+//     return Inertia::render('Admin/SettingPage/index');
+// })->name("admin.setting");
 
-Route::get('/admin/profile', function () {
-    return Inertia::render('Admin/ProfilePage/index');
-})->name("admin.profile");
+// Route::get('/admin/profile', function () {
+//     return Inertia::render('Admin/ProfilePage/index');
+// })->name("admin.profile");
 
 
 
