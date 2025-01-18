@@ -15,15 +15,9 @@ const ListImage = ({ images, setImages }) => {
     const handleSelectImage = async (e) => {
         setLoading(true);
         const imgUrl = await uploadToCloudinary(e.target.files[0]);
-        console.log("images ", imgUrl);
         setImages([...images, imgUrl]);
         setLoading(false);
     };
-
-    React.useEffect(() => {
-        console.log(images);
-        console.log(images.reverse());
-    }, [images]);
 
     return (
         <Stack gap="20px">

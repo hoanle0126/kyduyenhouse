@@ -17,9 +17,7 @@ import AvatarHeader from "./components/AvatarHeader";
 const ClientHeader = () => {
     const { props } = usePage();
     const [openSearch, setOpenSearch] = React.useState(false);
-    React.useEffect(() => {
-        console.log(props);
-    }, []);
+
 
     return (
         <Box
